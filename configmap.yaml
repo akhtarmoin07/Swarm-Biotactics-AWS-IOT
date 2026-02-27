@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: biorobotconfig
+    namespace: default
+data:
+  SWARM_ENVIRONMENT: "frankfurt-simulation"
+  TELEMETRY_INTERVAL_SECONDS: "5"
+  TARGET_REGION: "us-east-1"
