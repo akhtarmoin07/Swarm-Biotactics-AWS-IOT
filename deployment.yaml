@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biorobot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biorobot
+  template:
+    metadata:
+      labels:
+        app: biorobot
+    spec:
+      containers:
+      - name: simulator
+        image: YOUR_12_DIGIT_ID.dkr.ecr.us-east-1.amazonaws.com/biorobot-simulator:latest # Updated!
+        imagePullPolicy: Always # Updated!
+        envFrom:
+        - configMapRef:
+            name: biorobot-config 
+        volumeMounts:
+        - name: certs-vault
+          mountPath: "/app/certs"
+          readOnly: true
+      volumes:
+      - name: certs-vault
+        secret:
+          secretName: biorobot-k8s-secret

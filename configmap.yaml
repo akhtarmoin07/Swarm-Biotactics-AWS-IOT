@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: biorobotconfig
+    name: biorobot-config
     namespace: default
 data:
   SWARM_ENVIRONMENT: "frankfurt-simulation"
